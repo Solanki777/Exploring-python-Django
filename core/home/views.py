@@ -24,3 +24,10 @@ def home(request):
 def successpage(request):
     print("*"*10)
     return HttpResponse("<h1>this is successpage</h1>")
+
+def about(request):
+    return render(request,"about.html")
+
+def contact(request):
+    return render(request,"contact.html")
+

@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from home.views import home
 from home.views import successpage
+from home.views import *
 
 urlpatterns = [
 
     # when used comes in '' means main page it calls home functioin inside the home views
     path('',home,name="home"),
-    path('succ-page',successpage,name="success"),
+    path('succ-page/',successpage,name="success"),
+    path('contact/',contact,name="contact"),
+    path('about/',about,name="about"),
     path('admin/', admin.site.urls),
+    
 ]
