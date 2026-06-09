@@ -1,11 +1,21 @@
+
+{% extends "base.html" %}
+
+{% block start %}
+
+    <header>
+        <h1>Main Page</h1>
+    </header>
+
 <main>
-    <p>{{t}}</p>
+    <p>{{ t }}</p>
+
     <table border="1">
         <tr>
             <th>Name</th>
             <th>Age</th>
-            <th>city</th>
-            <th>Can Vote ?</th>
+            <th>City</th>
+            <th>Can Vote?</th>
         </tr>
 
         {% for i in p %}
@@ -13,33 +23,35 @@
             <td>{{ i.name }}</td>
             <td>{{ i.Age }}</td>
             <td>{{ i.city }}</td>
+
             <td
-            {% if i.Age < 19 %}
-            style="background-color:red;"
-            {%endif%}
-            > {% if i.Age >= 19 %}
-                Yes
-                {%else%}
-                No
-                {%endif%}
+                {% if i.Age < 19 %}
+                    style="background-color:red;"
+                {% endif %}
+            >
+                {% if i.Age >= 19 %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
     </table>
+
     <p>
         {% if "Appl" in fruit %}
-        yes there is a student likes Apple
+            Yes there is a student who likes Apple
         {% elif "Banana" in fruit %}
-        Yes there is a studnet likes Banana
+            Yes there is a student who likes Banana
         {% else %}
-        No available student
+            No available student
         {% endif %}
     </p>
-    <a href="/contact/"/>
-        contact
-    </a>
 
-    <a href="/about/"/>
-        about
-    </a>
+    <a href="/contact/">Contact</a>
+
+    <a href="/about/">About</a>
 </main>
+
+{% endblock %}

@@ -1,12 +1,12 @@
-<main>
-    <p>This is About Page</p>
-    
-    <a href="/contact/"/>
-        contact
-    </a>
+{% extends "base.html" %}
+{% block start %}
 
-    <a href="/">
-        Home page
-    </a>
+    <main>
+        <p>This is About Page</p>
 
-</main>
+        <a href="/contact/">Contact</a>
+
+        <a href="/">Home Page</a>
+    </main>
+
+{% endblock %}

@@ -17,17 +17,24 @@ def home(request):
     for p in people:
         print(p)
     return render(request,"index.html",context={
+        'page': 'Djanog tutorial ', 
         'p':people,
         't':text,
-        'fruit':likes})
+        'fruit':likes
+        })
 
 def successpage(request):
     print("*"*10)
     return HttpResponse("<h1>this is successpage</h1>")
 
 def about(request):
-    return render(request,"about.html")
+
+    # used show in url 
+    context ={ 'page' : 'About'}
+
+    return render(request,"about.html",context)
 
 def contact(request):
-    return render(request,"contact.html")
+    context = { 'page' : 'Contact'}
+    return render(request,"contact.html",context)
 

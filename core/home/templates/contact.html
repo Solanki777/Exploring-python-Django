@@ -1,10 +1,21 @@
-<main>
-    <p>This is Contact Page</p>
-</main>
-    <a href="/">
-        index
-    </a>
 
-    <a href="/about/"/>
-        about
-    </a>
+{% extends "base.html" %}
+{% block start %}
+    <header>
+        <h1>Contact Page</h1>
+    </header>
+
+    <main>
+        <p>This is Contact Page</p>
+    </main>
+
+    <nav>
+        <a href="/">Index</a>
+        <a href="/about/">About</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2026 My Website</p>
+    </footer>
+
+{% endblock %}
