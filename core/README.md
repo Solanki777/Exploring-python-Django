@@ -127,12 +127,49 @@ python manage.py shell
 
 
 to add access database here is the steps
+
 1. import all database structure from the model using
 
 ```bash
 from home.models import *
 ```
 
-make a object and pass some values
+2. make a object and pass some values
 ```bash
-student = Student (name="Mahesh" , age=21 , email = "solankimaheshkhash7@gmail.com" , address="Khash , Botad , 382255",)
+student = Student (name="Mahesh" , age=21 , email = "solankimaheshkhash7@gmail.com" , address="Khash , Botad , 382255")
+
+3. use save() which converts plython syntax into the SQL query
+
+```bash
+student.save()
+```
+
+4.To chack all values or object of the Students classs use
+
+```bash
+Students.objects.all()
+```
+
+OR
+
+```bash
+Students.objects.values()
+```
+
+for specific id
+
+```bash
+Students.objects.get(id=1)
+```
+
+in single syntax:
+
+```bash
+student = Students(name="John" , age=22 , email= "johndoe7@gmail.com" , address="america")
+```
+
+to get specific value
+
+```bash
+Students.objects.all()[0].email
+```
