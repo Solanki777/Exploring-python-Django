@@ -11,9 +11,6 @@ class Studnets(models.Model):
     email = models.EmailField()
     address = models.TextField(null=True, blank=True 
     )
-    image = models.ImageField()
-    file = models.FileField()
-
 # after creating any model or doing any changes in the model schemas the you have to hit the command
 class Product(models.Model):
     pass
