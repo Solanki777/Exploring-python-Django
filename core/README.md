@@ -135,8 +135,25 @@ from home.models import *
 ```
 
 2. make a object and pass some values
+
 ```bash
 student = Student (name="Mahesh" , age=21 , email = "solankimaheshkhash7@gmail.com" , address="Khash , Botad , 382255")
+```
+
+```bash
+Car.objects.create(car_name="Ranualt Kiger" , car_speed=80)
+```
+
+first create dictionary
+
+```bash
+car_dict={"car_name" : "Alto", "car_speed":"30"}
+```
+used it to save it
+
+```bash
+Car.objects.create(**car_dict)
+```
 
 3. use save() which converts plython syntax into the SQL query
 
@@ -150,6 +167,9 @@ student.save()
 Students.objects.all()
 ```
 
+when hit this command it returns object it but insted of returning id you can return with name or speed like done in models and use a constructor like __str__ (make sure you start again the terminal)
+
+
 OR
 
 ```bash
@@ -162,14 +182,25 @@ for specific id
 Students.objects.get(id=1)
 ```
 
-in single syntax:
-
-```bash
-student = Students(name="John" , age=22 , email= "johndoe7@gmail.com" , address="america")
-```
-
 to get specific value
 
 ```bash
 Students.objects.all()[0].email
+```
+
+you can store values in variable also 
+
+```bash
+cars = Car.objects.all()
+
+for car in cars:
+    print(f"The car name is {car.car_name} with the high speed of {car.car_speed}")
+```
+
+for updation
+```bash
+car = Car.objects.get(id=1)
+car.car_name="Lambo"
+car.car_speed=180
+car.save()
 ```

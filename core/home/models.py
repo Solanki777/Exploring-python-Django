@@ -15,5 +15,13 @@ class Students(models.Model):
     def greeting(self):
         return f"Hello {self.name}"
 # after creating any model or doing any changes in the model schemas the you have to hit the command
+
+class Car(models.Model):
+    
+    car_name=models.CharField(max_length=500)
+    car_speed=models.IntegerField(default=50)
+    def __str__(self):
+        return self.car_name
+
 class Product(models.Model):
     pass
