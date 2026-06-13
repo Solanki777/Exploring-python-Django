@@ -62,6 +62,35 @@
                 </div>
 
             </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Receipe Name</th>
+                    <th scope="col">Receipe Desc</th>
+                    <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rec in receipes %}
+                    <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{rec.receipe_name}}</td>
+                    <td>{{rec.receipe_description}}</td>
+                    <td>
+                        <img src="{{rec.receipe_image.url}}" width="100">
+                    </td>
+                    <td>
+                        <a href="/delete-rec/{{rec.id}}/" >Delete</a>
+                    <td>
+                    
+                    </tr>
+                     
+
+                    {% endfor %}
+                    
+                </tbody>
+                </table>
 
         </div>
 

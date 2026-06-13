@@ -218,3 +218,41 @@ Car.objects.get(id=1).delete()
 ```bash
 Car.objects.all().delete()
 ```
+
+### 10. To show the image file configuration:
+
+In your project's urls.py:
+
+```bash
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    # your urls
+]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
+
+```
+
+in your project settings.py at last
+
+```bash 
+STATIC_URL = 'static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+```
+
+use .url after file name like this
+
+```bash
+<td>
+    <img src="{{ rec.receipe_image.url }}" width="100">
+</td>
+```
+
