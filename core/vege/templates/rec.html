@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg mx-auto border-0" style="max-width: 1000px;">
+
+        <div class="card-header bg-success text-white text-center py-3">
+            <h2>🍽️ Add New Recipe</h2>
+        </div>
+
+        <div class="card-body p-5">
+
+            {% comment %} to upload file must use enctype {% endcomment %}
+            
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">
+                        Recipe Name
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        name="recipe_name"
+                        placeholder="Enter recipe name"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">
+                        Recipe Description
+                    </label>
+                    <textarea
+                        class="form-control form-control-lg"
+                        name="recipe_description"
+                        rows="5"
+                        placeholder="Describe your recipe..."
+                    ></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">
+                        Recipe Image
+                    </label>
+                    <input
+                        type="file"
+                        class="form-control form-control-lg"
+                        name="recipe_image"
+                    >
+                </div>
+
+                <div class="text-center">
+                    <button
+                        type="submit"
+                        class="btn btn-success btn-lg px-5"
+                    >
+                        Add Recipe
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
