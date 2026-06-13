@@ -204,3 +204,17 @@ car.car_name="Lambo"
 car.car_speed=180
 car.save()
 ```
+
+```bash
+Car.objects.filter(id =1 ).update(car_name="mustang")
+```
+
+deleteion: if exits than it delets else rises the erro
+
+```bash
+Car.objects.get(id=1).delete()
+```
+
+```bash
+Car.objects.all().delete()
+```
