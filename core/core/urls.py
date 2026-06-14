@@ -29,6 +29,7 @@ urlpatterns = [
     path('',home,name="home"),
     path('succ-page/',successpage,name="success"),
     path('delete-rec/<id>/' ,delete_receipe, name="delete_receipe" ),
+    path('update-rec/<id>/' ,update_receipe, name="update_receipe" ),
     path('rec/',rec_show,name="recepy"),
     path('contact/',contact,name="contact"),
     path('about/',about,name="about"),

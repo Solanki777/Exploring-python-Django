@@ -7,14 +7,13 @@
     <div class="card shadow-lg mx-auto border-0" style="max-width: 1000px;">
 
         <div class="card-header bg-success text-white text-center py-3">
-            <h2>🍽️ Add New Recipe</h2>
+            <h2>Update Recipe</h2>
         </div>
 
         <div class="card-body p-5">
             
 
             {% comment %} to upload file must use enctype {% endcomment %}
-            
             
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -28,6 +27,7 @@
                         class="form-control form-control-lg"
                         name="recipe_name"
                         placeholder="Enter recipe name"
+                        value="{{receipe.receipe_name }}"
                     >
                 </div>
 
@@ -40,7 +40,8 @@
                         name="recipe_description"
                         rows="5"
                         placeholder="Describe your recipe..."
-                    ></textarea>
+                    >{{receipe.receipe_description }}
+                    </textarea>
                 </div>
 
                 <div class="mb-4">
@@ -59,49 +60,12 @@
                         type="submit"
                         class="btn btn-success btn-lg px-5"
                     >
-                        Add Recipe
+                        Update
                     </button>
                 </div>
 
             </form>
             
-            <form method="GET">
-                <input type="text" name="search" placeholder="Search the recipe" class="form-control mb-3">
-                <button type="submit" class="btn btn-primary">
-                    search
-                </button>
-            </form>
-
-
-
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Receipe Name</th>
-                    <th scope="col">Receipe Desc</th>
-                    <th scope="col">Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for rec in receipes %}
-                    <tr>
-                    <th scope="row">{{forloop.counter}}</th>
-                    <td>{{rec.receipe_name}}</td>
-                    <td>{{rec.receipe_description}}</td>
-                    <td>
-                        <img src="{{rec.receipe_image.url}}" width="100">
-                    </td>
-                    <td>
-                        <a href="/delete-rec/{{rec.id}}/" >Delete</a>
-                        <a href="/update-rec/{{rec.id}}/" >Update</a>
-                    <td>
-                    
-                    </tr>
-                    {% endfor %}
-                    
-                </tbody>
-                </table>
 
         </div>
 
