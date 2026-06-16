@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-
+from django.contrib.auth.models import User
 
 
 
@@ -71,5 +71,37 @@ def delete_receipe(request,id):
     queryset=Receipe.objects.get(id=id)
     queryset.delete()
     return redirect('recepy')
+
+def login_page(request):
+    return render(request,'login.html')
+
+
+def register_page(request):
+
+    if request.method== "POST":
+        first_name= request.POST.get('first_name')
+        last_name= request.POST.get('last_name')
+        username= request.POST.get('username')
+        password= request.POST.get('password')
+        
+        if User.objects.filter(username=username).exists():
+            return render(request,'register.html',{'error': 'Username already exists'})
+        
+        user=User.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            username=username,
+            password=password
+
+        )
+
+        # to encrypt data 
+        user.set_password(password)
+        user.save()
+
+        return redirect('/login/')
+
+    
+    return render(request,'register.html')
 
 
