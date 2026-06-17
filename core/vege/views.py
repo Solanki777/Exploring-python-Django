@@ -1,12 +1,17 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login ,logout
+
+# if any one comes it must be login 
+from django.contrib.auth.decorators import login_required
 
 
 
 
 # Create your views here.
+
+@login_required(login_url="/login/")
 def rec_show(request):
     if request.method=="POST":
         data=request.POST
@@ -41,6 +46,8 @@ def rec_show(request):
 
 
 # TO UPDATE 
+
+@login_required(login_url="/login/")
 def update_receipe(request,id):
     queryset=Receipe.objects.get(id=id)
 
@@ -67,6 +74,8 @@ def update_receipe(request,id):
 
 
 # TO DELETE RECEIPE 
+
+@login_required(login_url="/login/")
 def delete_receipe(request,id):
     
     queryset=Receipe.objects.get(id=id)
@@ -97,6 +106,10 @@ def login_page(request):
             return redirect('/rec/')
         
     return render(request, 'login.html')
+
+def log_out(request):
+    logout(request)
+    return redirect('/login/')
 
 
 def register_page(request):
