@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login
 
 
 
@@ -72,8 +73,30 @@ def delete_receipe(request,id):
     queryset.delete()
     return redirect('recepy')
 
+
+
 def login_page(request):
-    return render(request,'login.html')
+
+    if request.method =="POST":
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        if not User.objects.filter(username=username).exists():
+            return render(request,'login.html',{'error': 'username not found'})
+        
+        # here we encrypted the password so we have to use authentication function from the auth 
+
+        user = authenticate(username=username ,  password=password)
+
+        if user==None:
+            return render(request,'login.html',{'error': 'invalid credential'})
+        
+        # for successfull login we redirect user to main page but here we use the session to maintain the user login info using login function from the same directory as authentication 
+        else:
+            login(request,user)
+            return redirect('/rec/')
+        
+    return render(request, 'login.html')
 
 
 def register_page(request):
@@ -83,7 +106,8 @@ def register_page(request):
         last_name= request.POST.get('last_name')
         username= request.POST.get('username')
         password= request.POST.get('password')
-        
+
+        # if user name is already taken         
         if User.objects.filter(username=username).exists():
             return render(request,'register.html',{'error': 'Username already exists'})
         

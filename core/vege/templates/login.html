@@ -1,5 +1,16 @@
 {% extends "base.html" %} {% block start %}
 
+<div class="card-body p-5">
+
+    {% if error %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+
+  
+
+</div>
 <div class="container mt-5">
   <div class="card shadow-lg mx-auto border-0" style="max-width: 1000px">
     <div class="card-header bg-success text-white text-center py-3">
