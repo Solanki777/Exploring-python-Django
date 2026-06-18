@@ -197,6 +197,11 @@ for car in cars:
     print(f"The car name is {car.car_name} with the high speed of {car.car_speed}")
 ```
 
+or to print
+```bash
+print(list(vege.values()))
+```
+
 for updation
 ```bash
 car = Car.objects.get(id=1)
@@ -256,3 +261,34 @@ use .url after file name like this
 </td>
 ```
 
+### 11. To sort:
+
+```bash
+vege= Receipe.objects.all().order_by('receipe_count')
+```
+
+```bash
+vege= Receipe.objects.all().order_by('-receipe_count')
+```
+
+also you can use the slicing
+
+```bash
+vege= Receipe.objects.all().order_by('-receipe_count')[0:1]
+```
+
+### 12. use fillter 
+
+```bash
+vege= Receipe.objects.filter(receipe_count=64)
+```
+
+for greter than equal to
+```bash
+vege= Receipe.objects.filter(receipe_count__gte=63)
+```
+
+for less equal to
+```bash
+vege= Receipe.objects.filter(receipe_count__lte=63)
+```
