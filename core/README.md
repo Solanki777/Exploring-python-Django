@@ -284,11 +284,22 @@ vege= Receipe.objects.filter(receipe_count=64)
 ```
 
 for greter than equal to
+
 ```bash
 vege= Receipe.objects.filter(receipe_count__gte=63)
 ```
 
 for less equal to
+
 ```bash
 vege= Receipe.objects.filter(receipe_count__lte=63)
 ```
+
+### 13.admin panel in django
+
+```bash
+python manage.py createsuperuser
+```
+
+### 14.to manage data using admin panel of django
+
