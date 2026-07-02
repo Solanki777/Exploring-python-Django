@@ -1,9 +1,21 @@
 from django.contrib import admin
-
-# Register your models here.
 from .models import *
 
-admin.site.register(Receipe)
-admin.site.register(Student)
-admin.site.register(Department)
-admin.site.register(StudentID)
+# admin.site.register(Department)
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display=["department_name","department_code"]
+
+@admin.register(StudentID)
+class StudentIDAdmin(admin.ModelAdmin):
+    list_display=["student_id"]
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = [
+        "student_name",
+        "student_id",
+        "department",
+        "student_email",
+        "student_age",
+    ]
