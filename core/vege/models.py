@@ -30,6 +30,9 @@ class Student(models.Model):
     student_email=models.EmailField(unique=True)
     student_age=models.IntegerField(default=18)
     student_address=models.TextField()
+    
+    def __str__(self):
+        return self.student_name
 
     class Meta:
         ordering=['student_id']

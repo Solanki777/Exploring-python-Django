@@ -176,7 +176,7 @@ OR
 Students.objects.values()
 ```
 
-for specific id
+for specific id use get only when you sure that data is exits else it give error
 
 ```bash
 Students.objects.get(id=1)
@@ -301,5 +301,68 @@ vege= Receipe.objects.filter(receipe_count__lte=63)
 python manage.py createsuperuser
 ```
 
-### 14.to manage data using admin panel of django
+### 14.Advance ORM commands 
 
+```bash 
+queryset = Student.objects.filter(student_name__startswith="mahe")
+```
+
+
+```bash 
+queryset = Student.objects.filter(student_name__endswith="mahe")
+```
+
+```bash 
+queryset = Student.objects.filter(student_name__icontains="m")
+```
+
+for foregion key access 
+```bash
+queryset = Student.objects.filter(department__department_name="	Information Technology")
+```
+
+```bash
+queryset = Student.objects.filter(department__department_name__icontains="Technology")
+```
+
+student having departmetn civil and information technology
+
+```bash
+d=[ 'Information Technology' , '	Computer Science']
+queryset = Student.objects.filter(department__department_name__in = d)
+```
+
+```bash
+queryset.count()
+```
+
+except this one 
+
+```bash
+queryset = Student.objects.exclude(
+    department__department_name="Civil"
+)
+```
+
+```bash
+queryset.exits()
+ ```
+
+ for range of only data only 5 data print
+ ```bash
+ queryset[0:5]
+ ```
+
+this only works in my_sql and postgress not in sql_lite
+ ```bash
+ queryset - Student.objects.all().distinct('student_age')
+ ```
+
+```bash
+queryset.reverse()
+```
+
+to print particular value only
+```bash
+queryset = Student.objects.values_list('student_name' , 'student_age')
+```
