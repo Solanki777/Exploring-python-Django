@@ -3,6 +3,7 @@ fake=Faker()
 import random
 from .models import *
 
+
 def seed_db(n=10):
     
     try:
@@ -14,9 +15,9 @@ def seed_db(n=10):
         
         for _ in range(n):
             department=random.choice(departments)
-            student_id= {random.randint(230430116119,23043011616129)}
+            student_id= f"STU - {random.randint(230430116119,23043011616129)} "
             student_name=fake.name()
-            student_email=fake.email(unique=True)
+            student_email=fake.email()
             student_age=random.randint(20,30)
             student_address=fake.address()
 
